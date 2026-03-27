@@ -1,10 +1,47 @@
+# ---
+# - name: Create a file on remote pc without Python
+#   hosts: tharun_pc
+#   gather_facts: no
+
+#   tasks:
+#     - name: Create file with echo
+#       raw: "echo 'hello tharun' > /tmp/tharun.txt"
+
+# --- 
+# - name: remove a remote file
+#   hosts: tharun_pc
+#   become: yes
+#   gather_facts: no
+  
+#   tasks:
+#     - name: remove a file
+#       file:
+#         path: "/tmp/tharun.txt"
+#         state: absent
+# ---
+#   - name: listing files from remote pc
+#     hosts:  tharun_pc
+#     become: yes
+#     gather_facts: no
+    
+#     tasks:
+#       - name: install apache
+#         raw: "apt-get install -y apache2"
+#       - name: start Apache service
+#         raw: "systemctl start apache2"
+#       - name: start apache at boot
+#         raw: "systemctl enable apache2"
 ---
-- name: Create a file on remote pc
+- name: listing files in remote directory
   hosts: tharun_pc
   gather_facts: no
-
+  
   tasks:
-    - name: write hello tharun into tharun.txt
-      copy:
-        content: "hello tharun"
-        dest: "/tmp/tharun.txt"
+
+    - name: list desktop folder
+      raw: "ls -l /root/Desktop/"
+      register: desktop_output
+
+    - name: show desktop listing
+      debug:
+        msg: "{{desktop_output.stdout_lines }}"
