@@ -1,0 +1,10 @@
+---
+- name: Create a text file
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Write hello kiran into first.txt
+      copy:
+        content: "hello "
+        dest: "/root/Github/ansible/first.txt"

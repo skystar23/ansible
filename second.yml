@@ -1,0 +1,10 @@
+---
+- name: Create a file on remote pc
+  hosts: tharun_pc
+  gather_facts: no
+
+  tasks:
+    - name: write hello tharun into tharun.txt
+      copy:
+        content: "hello tharun"
+        dest: "/tmp/tharun.txt"
