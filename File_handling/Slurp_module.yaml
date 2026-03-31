@@ -1,0 +1,15 @@
+---
+- name: reading text using slurp module
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+
+  - name: slurp file
+    ansible.builtin.slurp:
+      src: /root/Desktop/Kiran/first.txt
+    register: file_content
+
+  - name: show decoded content
+    ansible.builtin.debug:
+      msg: "{{ file_content.content| b64decode}}"

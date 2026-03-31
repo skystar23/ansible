@@ -1,0 +1,11 @@
+---
+- name: writing text and reading using lookup plugin from the files
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: writing hello kiran in file
+      raw: " echo 'hello kiran 11' > /root/Desktop/Kiran/first.txt"
+    - name: reading what is present inside file
+      ansible.builtin.debug:
+        msg: "{{lookup('file', '/root/Desktop/Kiran/first.txt')}}"
+

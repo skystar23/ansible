@@ -1,0 +1,20 @@
+---
+- name: writing into file
+  hosts: localhost
+  gather_facts: no
+   
+  tasks:
+
+    - name: Save text into file
+      ansible.builtin.copy:
+        content: "ysaikiran11.11"
+        dest: /root/Desktop/Kiran/first.txt
+
+    - name: Reading from file using slurp
+      ansible.builtin.slurp:
+        src: /root/Desktop/Kiran/first.txt
+      register: kiran
+    
+    - name: printing from the file
+      ansible.builtin.debug:
+        msg: "{{kiran.content | b64decode }}"

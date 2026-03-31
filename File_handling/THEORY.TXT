@@ -1,0 +1,11 @@
+Ways to Read File Content in Ansible
+1. Use the lookup('file', ...) plugin
+
+This reads a local file (on the control machine, not the remote host):
+yaml
+
+2. Use the slurp module
+
+This reads a file from a remote host and returns its content (base64‑encoded):
+yaml
+
